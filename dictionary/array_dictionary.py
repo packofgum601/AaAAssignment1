@@ -13,9 +13,9 @@ import bisect
 
 class ArrayDictionary(BaseDictionary):
 
-    def __init__(self):
+    def __init__(self, data = []):
         # TO BE IMPLEMENTED
-        pass
+        self.data = data
 
 
     def build_dictionary(self, words_frequencies: [WordFrequency]):
@@ -24,6 +24,8 @@ class ArrayDictionary(BaseDictionary):
         @param words_frequencies: list of (word, frequency) to be stored
         """
         # TO BE IMPLEMENTED
+        self.data = words_frequencies
+        self.data.sort(key=lambda y: y.word[0])
 
 
     def search(self, word: str) -> int:
@@ -34,7 +36,15 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
-        return 0
+        found = False
+        
+        for search in self.data:
+            if word == search.word:
+                found = True
+                return search.frequency
+        if found != True:
+            return 0
+                
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
         """
@@ -44,7 +54,17 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
-        return False
+        found = False
+        
+        for word in self.data:
+            if word_frequency == word.word:
+                found = True
+                return False
+        if found != True:
+            self.data.append(word_frequency)
+            self.data.sort(key=lambda y: y.word[0])
+            return True
+        
 
     def delete_word(self, word: str) -> bool:
         """
@@ -55,7 +75,18 @@ class ArrayDictionary(BaseDictionary):
         # find the position of 'word' in the list, if exists, will be at idx-1
         # TO BE IMPLEMENTED
 
-        return False
+        found = False
+        count = 0;
+        for w in self.data:
+            if word == w.word:
+                found = True
+                self.data.remove(self.data[count])
+                return True
+            count += 1
+                
+        
+        if found != True:
+            return False
 
 
     def autocomplete(self, prefix_word: str) -> [WordFrequency]:
@@ -64,4 +95,18 @@ class ArrayDictionary(BaseDictionary):
         @param prefix_word: word to be autocompleted
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'prefix_word'
         """
-        return []
+        
+        alist = [] #autocomplete list
+        for word in self.data:
+            if word.word.startswith(prefix_word):
+                alist.append(word)
+        
+        alist.sort(key = lambda y: y.frequency, reverse=True)
+        if len(alist) > 3:
+            del alist[3:]
+            
+        
+        
+        
+        
+        return alist
