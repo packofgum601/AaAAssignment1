@@ -10,6 +10,15 @@ class ListNode:
     def __init__(self, word_frequency: WordFrequency):
         self.word_frequency = word_frequency
         self.next = None
+        
+    # getters and setters
+    def get_word_frequency(self):
+        return self.word_frequency
+    
+    def get_word(self):
+        return self.word_frequency.word
+    
+    
 
 # ------------------------------------------------------------------------
 # This class  is required TO BE IMPLEMENTED
