@@ -212,29 +212,7 @@ class LinkedListDictionary(BaseDictionary):
         return alist
             
         
-        
-        
-        
-        
-        
-        
-        
-#         ''' array
-#         alist = [] #autocomplete list
-#         for word in self.data:
-#             if word.word.startswith(prefix_word):
-#                 alist.append(word)
-        
-#         alist.sort(key = lambda y: y.frequency, reverse=True)
-#         if len(alist) > 3:
-#             del alist[3:]
-            
-        
-        
-        
-        
-#         return alist
-# '''
+    
         
 
 

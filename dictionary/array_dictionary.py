@@ -11,6 +11,7 @@ import bisect
 # __copyright__ = 'Copyright 2022, RMIT University'
 # ------------------------------------------------------------------------
 
+#TODO: put array comments throughout the code, instyead of just at the top
 class ArrayDictionary(BaseDictionary):
 
     def __init__(self, data = []):
@@ -24,6 +25,8 @@ class ArrayDictionary(BaseDictionary):
         @param words_frequencies: list of (word, frequency) to be stored
         """
         # TO BE IMPLEMENTED
+        
+        #sort the word frequencies by word
         self.data = words_frequencies
         self.data.sort(key=lambda y: y.word[0])
 
@@ -36,12 +39,14 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
-        found = False
-        
-        for search in self.data:
-            if word == search.word:
-                found = True
+        found = False #if the word has been found
+                
+        for search in self.data: #iterate over array 
+            if word == search.word: #if the word has been found
+        #change found to equal true, and return the frequency
+                found = True 
                 return search.frequency
+        #if not found, return 0 
         if found != True:
             return 0
                 
@@ -53,14 +58,24 @@ class ArrayDictionary(BaseDictionary):
         :return: True whether succeeded, False when word is already in the dictionary
         """
         # TO BE IMPLEMENTED
-
-        found = False
         
-        for word in self.data:
-            if word_frequency == word.word:
+        '''iterate over array
+        if the word is already in the dictionary:
+            return false, as we do not need to add it to the dictionary
+        if after the loop, found is still false:
+            append the list to contain the word and resort the list
+            return True '''
+
+        found = False #if the word has been found
+        
+        for word in self.data: #iterate over the array
+            if word_frequency == word.word: #if the word has been found
+                #change found to true and return False, as we do not need to add it to the dictionary
                 found = True
                 return False
-        if found != True:
+        if found != True: #if the word is not in the dictionary
+            #add the word to the dictionary and re-sort the list
+            #return True
             self.data.append(word_frequency)
             self.data.sort(key=lambda y: y.word[0])
             return True
@@ -72,20 +87,23 @@ class ArrayDictionary(BaseDictionary):
         @param word: word to be deleted
         @return: whether succeeded, e.g. return False when point not found
         """
-        # find the position of 'word' in the list, if exists, will be at idx-1
+        
         # TO BE IMPLEMENTED
 
-        found = False
-        count = 0;
-        for w in self.data:
-            if word == w.word:
+            
+            
+        found = False #if the word has been found
+        count = 0; #index the word is at
+        for word in self.data: #iterate over array
+            if word == word.word: # if word is found
+                #return True and delete word at the count index
                 found = True
                 self.data.remove(self.data[count])
                 return True
-            count += 1
+            count += 1 #iterate count by 1
                 
         
-        if found != True:
+        if found != True: #if word is not in list, return False
             return False
 
 
@@ -95,18 +113,20 @@ class ArrayDictionary(BaseDictionary):
         @param prefix_word: word to be autocompleted
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'prefix_word'
         """
+
         
         alist = [] #autocomplete list
-        for word in self.data:
-            if word.word.startswith(prefix_word):
+        for word in self.data: # iterate over the array
+            if word.word.startswith(prefix_word): #if the word starts with prefux_word
+                #append alist with word
                 alist.append(word)
         
+        #sort list by frequency then reverse it so the largest frequency is first
         alist.sort(key = lambda y: y.frequency, reverse=True)
+        
+        #if the list is larger than 3 words, delete everything after the first 3 words
         if len(alist) > 3:
             del alist[3:]
             
-        
-        
-        
-        
+        #return the list
         return alist
