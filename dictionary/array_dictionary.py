@@ -80,7 +80,6 @@ class ArrayDictionary(BaseDictionary):
             self.data.sort(key=lambda y: y.word[0])
             return True
         
-
     def delete_word(self, word: str) -> bool:
         """
         delete a word from the dictionary

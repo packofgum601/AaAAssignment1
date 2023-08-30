@@ -4,11 +4,11 @@ NOT Found 'facial'
 NOT Found 'booming'
 Add 'booming' succeeded
 Found 'booming' with frequency 123456
-Autocomplete for 'boo': [ booming: 123456  boom: 21620  bookkeeping: 21582  ]
+Autocomplete for 'boo': [ ]
 Delete 'boom' succeeded
-Autocomplete for 'boo': [ booming: 123456  bookkeeping: 21582  booby: 8764  ]
+Autocomplete for 'boo': [ ]
 Found 'aluminum' with frequency 329946
-Autocomplete for 'alum': [ aluminum: 329946  alumna: 6997  ]
+Autocomplete for 'alum': [ alum: 5528678  ]
 Delete 'alumna' succeeded
-Autocomplete for 'alum': [ aluminum: 329946  ]
-Autocomplete for 'alrighty': [ ]
+Autocomplete for 'alum': [ alum: 5528678  ]
+Autocomplete for 'alrighty': [ alrighty: 5528678  alrighty: 68685  ]
