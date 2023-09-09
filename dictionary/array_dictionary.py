@@ -1,6 +1,7 @@
 from dictionary.word_frequency import WordFrequency
 from dictionary.base_dictionary import BaseDictionary
 import bisect
+from timeit import default_timer as timer
 
 
 # ------------------------------------------------------------------------
@@ -11,7 +12,6 @@ import bisect
 # __copyright__ = 'Copyright 2022, RMIT University'
 # ------------------------------------------------------------------------
 
-#TODO: put array comments throughout the code, instyead of just at the top
 class ArrayDictionary(BaseDictionary):
 
     def __init__(self, data = []):
@@ -27,8 +27,10 @@ class ArrayDictionary(BaseDictionary):
         # TO BE IMPLEMENTED
         
         #sort the word frequencies by word
+
         self.data = words_frequencies
         self.data.sort(key=lambda y: y.word[0])
+
 
 
     def search(self, word: str) -> int:
@@ -39,6 +41,7 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
+
         found = False #if the word has been found
                 
         for search in self.data: #iterate over array 
@@ -46,9 +49,12 @@ class ArrayDictionary(BaseDictionary):
         #change found to equal true, and return the frequency
                 found = True 
                 return search.frequency
-        #if not found, return 0 
-        if found != True:
-            return 0
+        if found != True: #if the word is not in the dictionary
+            return 0 #return 0
+
+        print("Time to search: ", end - start)
+        
+        
                 
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
@@ -65,6 +71,8 @@ class ArrayDictionary(BaseDictionary):
         if after the loop, found is still false:
             append the list to contain the word and resort the list
             return True '''
+            
+
 
         found = False #if the word has been found
         
@@ -72,12 +80,14 @@ class ArrayDictionary(BaseDictionary):
             if word_frequency == word.word: #if the word has been found
                 #change found to true and return False, as we do not need to add it to the dictionary
                 found = True
+ 
                 return False
         if found != True: #if the word is not in the dictionary
             #add the word to the dictionary and re-sort the list
             #return True
             self.data.append(word_frequency)
             self.data.sort(key=lambda y: y.word[0])
+
             return True
         
     def delete_word(self, word: str) -> bool:
@@ -89,21 +99,20 @@ class ArrayDictionary(BaseDictionary):
         
         # TO BE IMPLEMENTED
 
-            
-            
         found = False #if the word has been found
-        count = 0; #index the word is at
-        for word in self.data: #iterate over array
-            if word == word.word: # if word is found
-                #return True and delete word at the count index
-                found = True
-                self.data.remove(self.data[count])
-                return True
-            count += 1 #iterate count by 1
-                
+        count = 0 
         
-        if found != True: #if word is not in list, return False
-            return False
+        for w in self.data: #iterate over the array
+            if word == w.word: #if the word has been found
+                self.data.remove(self.data[count]) #remove the word from the dictionary
+                found = True #change found to true
+                return True
+            count += 1
+        if found != True: #if the word is not in the dictionary
+            return False #return False
+        
+            
+                
 
 
     def autocomplete(self, prefix_word: str) -> [WordFrequency]:
@@ -113,7 +122,7 @@ class ArrayDictionary(BaseDictionary):
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'prefix_word'
         """
 
-        
+        start = timer()
         alist = [] #autocomplete list
         for word in self.data: # iterate over the array
             if word.word.startswith(prefix_word): #if the word starts with prefux_word
@@ -126,6 +135,7 @@ class ArrayDictionary(BaseDictionary):
         #if the list is larger than 3 words, delete everything after the first 3 words
         if len(alist) > 3:
             del alist[3:]
-            
+        
         #return the list
         return alist
+    

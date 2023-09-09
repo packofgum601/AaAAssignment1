@@ -47,28 +47,9 @@ class TrieDictionary(BaseDictionary):
                     
             curr_node.is_last = True
             curr_node.frequency = word_frequency.frequency
-            curr_node = self.root
-            
-            
-            
-        # curr_node = self.root
-        # for letter in word_frequency.word:
-        #     if letter in curr_node.children:
-        #         curr_node = curr_node.children[letter]
-        #         return False
-        #     else:
-        #         new_node = TrieNode(letter)
-        #         curr_node.children[letter] = new_node
-        #         curr_node = new_node
-        # curr_node.is_last = True
-        # curr_node.frequency = word_frequency.frequency
-        # return True
-            
-            
+            curr_node = self.root       
             
         
-
-
         
 
     def search(self, word: str) -> int:
@@ -162,40 +143,4 @@ class TrieDictionary(BaseDictionary):
         autocomplete_list.sort(key=lambda x: x.frequency, reverse=True) #sort the list
         return autocomplete_list[:3] #return the first 3 elements of the list
         
-        
-        
-        
-        
-                
-        
-    
-    
-    # curr_node = self.root #start at the root
-    #     for letter in word: #iterate over the word
-    #         if letter in curr_node.children: #if the letter is in the children
-    #             curr_node = curr_node.children[letter] #move to the next node
-    #         else: #if the letter is not in the children
-    #             return 0  #return 0
-    #     if curr_node.is_last: #if the node is the last node
-    #         return curr_node.frequency  #return the frequency
-    #     else:
-            
-        
-        
-            
-                
-            
-    
-    
-    
-            
-            
-    
-            
-    
-            
-        
-        
-        
-            
-    
+
