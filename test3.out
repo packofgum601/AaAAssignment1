@@ -1,14 +1,14 @@
 Found 'btvinfo' with frequency 176464
 Delete 'btvinfo' succeeded
 NOT Found 'btvinfo'
-NOT Found 'sassone'
-Delete 'sassone' failed
+Found 'sassone' with frequency 52340
+Delete 'sassone' succeeded
 NOT Found 'sassone'
 Add 'booming' succeeded
-Found 'booming' with frequency 123456
-Autocomplete for 'boo': [ bookmark: 27665146  bookmarks: 7607172  booths: 1584453  ]
+Found 'booming' with frequency 1170560
+Autocomplete for 'boo': [ books: 347710184  book: 330959949  bookmark: 27665146  ]
 Delete 'booming' succeeded
-Autocomplete for 'boo': [ bookmark: 27665146  bookmarks: 7607172  booths: 1584453  ]
+Autocomplete for 'boo': [ books: 347710184  book: 330959949  bookmark: 27665146  ]
 Found 'broeck' with frequency 39549
-Autocomplete for 'bro': [ broward: 1441074  broome: 985695  broadened: 633960  ]
-Autocomplete for 'nec': [ necessary: 72604405  necronomicon: 190084  neckwear: 163236  ]
+Autocomplete for 'bro': [ browse: 128740445  browser: 64824987  brown: 64112042  ]
+Autocomplete for 'nec': [ necessary: 72604405  neck: 17354931  necessarily: 15867816  ]
