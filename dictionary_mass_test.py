@@ -1,6 +1,7 @@
 import os
 import time
 import sys
+import subprocess
 
 def usage():
     print('python3 dictionary_mass_test.py', '<approach> <data fileName> <number of times to run>')
@@ -14,18 +15,11 @@ def main():
         print('Incorrect number of arguments.')
         usage()
     
-    """
-    - Run file x number of times
-    - Record start time
-    - Record end time
-    - Calculate average
-    """
-    
     list_of_times = []
     for i in range(int(args[3])):
-        start = time.process_time_ns()
-        os.system(f'python3 dictionary_file_based.py {args[1]} {args[2]} test1.in test1.out')
-        end = time.process_time_ns()
+        start = time.time()
+        subprocess.call(["python3", "dictionary_file_based.py", args[1], args[2], "test1.in", "test1.out"])
+        end = time.time()
 
         time_taken = end - start
         print(f"time taken: {time_taken}")
@@ -33,7 +27,7 @@ def main():
     
     sum_of_times = sum(list_of_times)
     average_of_times = sum_of_times / len(list_of_times)
-    print(f"\naverage time taken: {int(average_of_times)}ns")
+    print(f"\naverage time taken: {average_of_times}")
 
 if __name__ == "__main__":
     main()
