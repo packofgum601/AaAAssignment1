@@ -18,7 +18,7 @@ def main():
     with open(file_name, "w") as file:
         for line in range(int(args[1])):
             to_write = f"{args[2]} {args[3]}"
-            if args[4]:
+            if len(args) > 4:
                 to_write = to_write + f" {args[4]}"
             file.write(to_write + "\n")
         

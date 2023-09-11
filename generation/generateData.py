@@ -27,4 +27,8 @@ with open("sampleData200k.txt", "r") as f:
     with open("datafiles/sampleData50k.txt", "w") as f:
         for word in data50k:
             f.write(word + " \n")
+
+    with open("datafiles/sampleData100k.txt", "w") as f:
+        for word in data100k:
+            f.write(word + " \n")
     

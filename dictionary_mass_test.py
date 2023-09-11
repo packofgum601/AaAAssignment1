@@ -4,21 +4,21 @@ import sys
 import subprocess
 
 def usage():
-    print('python3 dictionary_mass_test.py', '<approach> <data fileName> <number of times to run>')
+    print('python3 dictionary_mass_test.py', '<approach> <data fileName> <number of times to run> <test file name without extention>')
     print('<approach> = <array | linkedlist | trie>')
     sys.exit(1)
 
 def main():
     args = sys.argv
 
-    if len(args) != 4:
+    if len(args) != 5:
         print('Incorrect number of arguments.')
         usage()
     
     list_of_times = []
     for i in range(int(args[3])):
         start = time.time()
-        subprocess.call(["python3", "dictionary_file_based.py", args[1], args[2], "test1.in", "test1.out"])
+        subprocess.call(["python3", "dictionary_file_based.py", args[1], args[2], f"./generation/tests/{args[4]}.in", f"{args[4]}.out"])
         end = time.time()
 
         time_taken = end - start
