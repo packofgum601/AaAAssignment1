@@ -122,7 +122,7 @@ class ArrayDictionary(BaseDictionary):
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'prefix_word'
         """
 
-        start = timer()
+        
         alist = [] #autocomplete list
         for word in self.data: # iterate over the array
             if word.word.startswith(prefix_word): #if the word starts with prefux_word

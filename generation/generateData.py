@@ -16,19 +16,19 @@ with open("sampleData200k.txt", "r") as f:
     data50k = words[:50000]
     data100k = words[:100000]
     
-    with open("datafiles/sampleData500.txt", "w") as f:
+    with open("sampleData500.txt", "w") as f:
         for word in data500:
             f.write(word + " \n")
             
-    with open("datafiles/sampleData10k.txt", "w") as f:
+    with open("sampleData10k.txt", "w") as f:
         for word in data10k:
             f.write(word + " \n")
             
-    with open("datafiles/sampleData50k.txt", "w") as f:
+    with open("sampleData50k.txt", "w") as f:
         for word in data50k:
             f.write(word + " \n")
 
-    with open("datafiles/sampleData100k.txt", "w") as f:
+    with open("sampleData100k.txt", "w") as f:
         for word in data100k:
             f.write(word + " \n")
     
